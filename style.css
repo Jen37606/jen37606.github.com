@@ -5,9 +5,7 @@ header{
 h1{
 	font: 25px Arial;
 	font-weight: bold;
-	border: 1px solid #bbb;
-	color: #555;
-	background-color: #eee;
+	color: #333;
 	padding: 10px;
 	text-transform: capitalize;
 	text-align: left;
@@ -29,23 +27,6 @@ h3{
 	font-weight: bold;
 	color: #555;
 	text-transform: capitalize;
-}
-
-.button{
-	margin: 20px;
-}
-
-.button h2{
-	background: #eee;
-	border: 1px solid #bbb;
-	border-radius:15px;
-	padding: 10px;
-	text-align: center;
-}
-
-.button a{
-	font-size: 22px;
-	color: navy;
 }
 
 p{
@@ -123,21 +104,64 @@ li li{
 	
 }
 
+hr{
+	margin: 20px 0px;
+}
+
 #cta{
 	text-align: center;
 }
 
+#searchbar{
+	text-align: center;
+	margin: 10px 20px 0px 20px;
+	padding: 0px;
+	height: 30px;
+}
+
 #search{
-	width: 100%;
+	width: 85%;
 	background: #ffffff;
 	border: 1px solid #bbb;
 	border-radius:15px;
 	height: 30px;
-	padding: 15px;
+	padding: 0px 15px;
+	margin: 0px 5px 0px 0px;
 }
 
-#searchbar{
-	margin: 10px 20px 20px 20px;
+#go{
+	border: 0px;
+	background:url(images/search.gif);
+	width: 30px;
+	height: 30px;
+	margin: 0px;
+	padding: 0px;
+	line-height: 25px;
+}
+
+.button{
+	margin: 10px 20px;
+}
+
+.button h2{
+	font-size: 22px;
+	color: navy;
+	font-weight: normal;
+	background: #eee;
+	border: 1px solid #bbb;
+	border-radius:15px;
+	padding: 10px;
+	text-align: center;
+}
+
+.button h2 a{
+	font-size: 22px;
+	color: navy;
+}
+
+.button h2:hover{
+	font-size: 22px;
+	color: orange;
 }
 
 #clear{

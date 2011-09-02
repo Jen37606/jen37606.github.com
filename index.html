@@ -15,15 +15,27 @@ Term: 1109
 		
 	</head>
 	<body>
-	<header>
-	<h1>Movie Collection Library</h1>
-	</header>
-	<div id="cta">
-	<img src="images/CTA.png" title="" alt="" border="0" width="266" height="179" />
-	</div>
-	<div id="searchbar"><input type="text" id="search" name="search" width="50" value="Search For A Movie" onclick="this.value='';" onblur="this.value='Search For A Movie';" /></div>
-	<p>Now you can keep a library of all your movies! Add movies to your library or use the search feature to easily find movies in your library!</p>
-	<div class="button"><h2><a href="additem.html">Add A New Movie</a></h2></div>
-	
+		<header>
+			<h1>Movie Collection Library</h1>
+		</header>
+		<div id="cta">
+			<img src="images/CTA.png" title="" alt="" border="0" width="266" height="179" />
+		</div>
+		<div id="searchbar">
+			<input type="text" id="search" name="search" value="Search For A Movie" onclick="this.value='';" onblur="this.value='Search For A Movie';" /> <input type="button" id="go" />
+		</div>
+		<div id="addnewbutton">
+			<p>Now you can keep a library of all your movies! Add movies to your library or use the search feature to easily find movies in your library!</p>
+			<div class="button"><a href="additem.html"><h2>Add A New Movie</h2></a></div>
+			<hr />
+		</div>
+		<div id="searchbycat">
+			<p>Browse Collection By:</p>
+			<div class="button"><a href="#"><h2>Title</h2></a></div>
+			<div class="button"><a href="#"><h2>Genre</h2></a></div>
+			<div class="button"><a href="#"><h2>Actor</h2></a></div>
+			<div class="button"><a href="#"><h2>Director</h2></a></div>
+			<div class="button"><a href="#"><h2>Rating</h2></a></div>
+		</div>
 	</body>
 </html>
