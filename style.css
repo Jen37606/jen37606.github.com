@@ -24,11 +24,18 @@ h2{
 	text-transform: capitalize;
 }
 
-#button{
+h3{
+	font: 17px Arial;
+	font-weight: bold;
+	color: #555;
+	text-transform: capitalize;
+}
+
+.button{
 	margin: 20px;
 }
 
-#button h2{
+.button h2{
 	background: #eee;
 	border: 1px solid #bbb;
 	border-radius:15px;
@@ -36,7 +43,7 @@ h2{
 	text-align: center;
 }
 
-#button a{
+.button a{
 	font-size: 22px;
 	color: navy;
 }
@@ -118,6 +125,10 @@ li li{
 
 #cta{
 	text-align: center;
+}
+
+#searchbar{
+	margin: 20px;
 }
 
 #clear{
