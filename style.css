@@ -1,5 +1,9 @@
+header{
+	margin: 0px;
+}
+
 h1{
-	font: 30px Arial;
+	font: 25px Arial;
 	font-weight: bold;
 	border: 1px solid #bbb;
 	color: #555;
@@ -9,6 +13,10 @@ h1{
 	text-align: left;
 }
 
+header h1{
+	text-align: center;
+}
+
 h2{
 	font: 18px Arial;
 	font-weight: bold;
@@ -16,17 +24,28 @@ h2{
 	text-transform: capitalize;
 }
 
+#button{
+	margin: 20px;
+}
+
 #button h2{
 	background: #eee;
 	border: 1px solid #bbb;
+	border-radius:15px;
 	padding: 10px;
 	text-align: center;
 }
 
+#button a{
+	font-size: 22px;
+	color: navy;
+}
+
 p{
-	font: 12px Arial;
+	font: 16px Arial;
 	font-weight: normal;
 	color: #555;
+	margin: 20px;
 }
 
 fieldset{
@@ -95,6 +114,10 @@ li li{
 	padding-left: 10px;
 	font-style: italic;
 	
+}
+
+#cta{
+	text-align: center;
 }
 
 #clear{
