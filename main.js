@@ -243,3 +243,15 @@ function validateForm(){
 		saveItems(); // if all is good than run the saveItems function
 	}
 }
+
+function clickclear(thisfield, defaulttext) {
+if (thisfield.value == defaulttext) {
+thisfield.value = "";
+}
+}
+
+function clickrecall(thisfield, defaulttext) {
+if (thisfield.value == "") {
+thisfield.value = defaulttext;
+}
+}
