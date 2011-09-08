@@ -1,3 +1,12 @@
+#cta{
+	text-align: center;
+}
+
+#searchbar{
+	margin-left:10px;
+}
+
+/*
 header{
 	margin: 0px;
 }
@@ -180,3 +189,5 @@ hr{
 	font: 16px Arial;
 	color: #555;
 }
+
+*/
