@@ -18,8 +18,8 @@ Term: 1109
 		<!-- Mobile IE needs ClearType for smoothing fonts -->
 		<meta http-equiv="cleartype" content="on">
 		
-		<link rel="stylesheet" ref="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
-		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
 		
 		<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
 		<script src="js/libs/modernizr.custom.min.js"></script>
@@ -27,31 +27,68 @@ Term: 1109
 	</head>
 	<body>
 	
+		<div data-role="page">
+			<div data-role="header">
+				<h1>Movie Collection Library</h1>
+			</div>
+			<div data-role="content">
+			
+				<div id="cta">
+					<img src="images/CTA.png" title="" alt="" border="0" width="266" height="179" />
+				</div>
+							
+				<div data-role="fieldcontain">
+    				<label for="search">Search For A Movie:</label>
+    				<input type="search" name="moviesearch" id="search" value="" />
+				</div>
+
+				<div id="addnewbutton">
+					<p>Now you can keep a library of all your movies! Add movies to your library or use the search feature to easily find movies in your library!</p>
+				<p><a href="additem.html" data-role="button" data-icon="plus">Add A New Movie</a></p>
+				<hr />
+				</div>
+				<div id="searchbycat">
+					<p>Browse Collection By Genre:</p>
+					<p><a href="#comedy" data-role="button" data-icon="arrow-r" data-iconpos="right">Comedy</a></p>
+					<p><a href="#drama" data-role="button" data-icon="arrow-r" data-iconpos="right">Drama</a></p>
+					<p><a href="#action" data-role="button" data-icon="arrow-r" data-iconpos="right">Action</a></p>
+					<p><a href="#horror" data-role="button" data-icon="arrow-r" data-iconpos="right">Horror</a></p>
+					<p><a href="#documentary" data-role="button" data-icon="arrow-r" data-iconpos="right">Documentary</a></p>
+					<p><a href="#other" data-role="button" data-icon="arrow-r" data-iconpos="right">Other</a></p>
+
+				</div>
+			
+			</div>			
+			<div data-role="footer">
+				<h4>Footer</h4>
+			</div>
+			
+		</div>
+		
+		<!-- NEW PAGE!!! -->
+		<div data-role="page" id="comedy" data-add-back-btn="true">
+			<div data-role="header">
+				<h1>Comedies</h1>
+			</div>
+			<div data-role="content">
+			<ul data-role="listview">
+				<li>
+					<img src="images/comedy.jpg" />
+					<h2>Movie Title</h2>
+					<p>Description</p>
+				</li>
+			</ul>
+			</div>			
+			<div data-role="footer" data-position="fixed">
+				<h4>Footer</h4>
+			</div>
+			
+		</div>
+	
+	
 	<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
 	<script src="js/main.js"></script>
-	
-		<header>
-			<h1>Movie Collection Library</h1>
-		</header>
-		<div id="cta">
-			<img src="images/CTA.png" title="" alt="" border="0" width="266" height="179" />
-		</div>
-		<div id="searchbar">
-			<input type="text" id="search" name="search" value="Search For A Movie" onclick="this.value='';" onblur="this.value='Search For A Movie';" /> <input type="button" id="go" />
-		</div>
-		<div id="addnewbutton">
-			<p>Now you can keep a library of all your movies! Add movies to your library or use the search feature to easily find movies in your library!</p>
-			<div class="button"><a href="additem.html"><h2>Add A New Movie</h2></a></div>
-			<hr />
-		</div>
-		<div id="searchbycat">
-			<p>Browse Collection By:</p>
-			<div class="button"><a href="#"><h2>Title</h2></a></div>
-			<div class="button"><a href="#"><h2>Genre</h2></a></div>
-			<div class="button"><a href="#"><h2>Actor</h2></a></div>
-			<div class="button"><a href="#"><h2>Director</h2></a></div>
-			<div class="button"><a href="#"><h2>Rating</h2></a></div>
-		</div>
+
 	</body>
 </html>
