@@ -6,7 +6,16 @@
 	margin-left:10px;
 }
 
+#movie-list img{
+	padding-left: 10px;
+}
+
+
+
 /*
+
+OLD CSS-------
+
 header{
 	margin: 0px;
 }
