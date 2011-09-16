@@ -10,7 +10,14 @@
 	padding-left: 10px;
 }
 
+#movieinfo h3{
+	margin: 0px;
+	padding: 0px 0px 10px 0px;
+}
 
+#movieinfo label{
+	padding-left: 2px;
+}
 
 /*
 
