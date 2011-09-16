@@ -16,41 +16,103 @@ function getItems(){
 		var release = value[7];
 		var description = value[8];
 		var newDiv = document.createElement("div");
-		for(var ii=0, allLength = value.length; ii < allLength; ii++){
+		/*for(var ii=0, allLength = value.length; ii < allLength; ii++){
 			var newPara = document.createElement("p");
 			var itemTxt = document.createTextNode(value[ii]);
 			newPara.appendChild(itemTxt);
 			newDiv.appendChild(newPara);
 			getListdiv.appendChild(newDiv);
-		}
+		}*/
+		var newh3 = document.createElement("h3");
+		var titleTxt = document.createTextNode(value[1]);
+		newh3.appendChild(titleTxt);
+		newDiv.appendChild(newh3);
+		getListdiv.appendChild(newDiv);
+		var setdiv = newDiv.setAttribute("data-role", "fieldcontain");
+		
+		var newP = document.createElement("p");
+		var genreTxt = document.createTextNode("Genre: " + value[0]);
+		newP.appendChild(genreTxt);
+		newDiv.appendChild(newP);
+		getListdiv.appendChild(newDiv);
+		
+		var newP = document.createElement("p");
+		var actorTxt = document.createTextNode("Actors/Actresses: " + value[2]);
+		newP.appendChild(actorTxt);
+		newDiv.appendChild(newP);
+		getListdiv.appendChild(newDiv);
+		
+		var newP = document.createElement("p");
+		var directorTxt = document.createTextNode("Director: " + value[3]);
+		newP.appendChild(directorTxt);
+		newDiv.appendChild(newP);
+		getListdiv.appendChild(newDiv);
+		
+		var newP = document.createElement("p");
+		var ratingTxt = document.createTextNode("Rating: " + value[4]);
+		newP.appendChild(ratingTxt);
+		newDiv.appendChild(newP);
+		getListdiv.appendChild(newDiv);
+		
+		var newP = document.createElement("p");
+		var favTxt = document.createTextNode("Favorites: " + value[5]);
+		newP.appendChild(favTxt);
+		newDiv.appendChild(newP);
+		getListdiv.appendChild(newDiv);
+		
+		var newP = document.createElement("p");
+		var famTxt = document.createTextNode(value[6]);
+		newP.appendChild(famTxt);
+		newDiv.appendChild(newP);
+		getListdiv.appendChild(newDiv);
+		
+		var newP = document.createElement("p");
+		var releaseTxt = document.createTextNode("Release Date: " + value[7]);
+		newP.appendChild(releaseTxt);
+		newDiv.appendChild(newP);
+		getListdiv.appendChild(newDiv);
+		
+		var newP = document.createElement("p");
+		var descTxt = document.createTextNode("Decription: " + value[8]);
+		newP.appendChild(descTxt);
+		newDiv.appendChild(newP);
+		getListdiv.appendChild(newDiv);
+		
 		var genreImage = "other.jpg"; 
-			if(genre == "comedy"){ genreImage = "comedy.jpg"; }
-			if(genre == "drama"){ genreImage = "drama.jpg"; }
-			if(genre == "action"){ genreImage = "action.jpg"; }
-			if(genre == "horror"){ genreImage = "horror.jpg"; }
-			if(genre == "documentary"){ genreImage = "documentary.jpg"; }
+			if(genre == "Comedy"){ genreImage = "comedy.jpg"; }
+			if(genre == "Drama"){ genreImage = "drama.jpg"; }
+			if(genre == "Action"){ genreImage = "action.jpg"; }
+			if(genre == "Horror"){ genreImage = "horror.jpg"; }
+			if(genre == "Documentary"){ genreImage = "documentary.jpg"; }
+		
 		//add image
 		var newP = document.createElement("p");
 		var newImg = document.createElement("IMG");
 		newImg.setAttribute("src", "images/" + genreImage);
 		newP.appendChild(newImg);
+		newDiv.appendChild(newP);
 		
 		//delete single item link
+		var newP = document.createElement("p");
 		var deleteLink = document.createElement("a");
 		var setHref = deleteLink.setAttribute("href", "#");
 		var setOnclick = deleteLink.setAttribute("onclick", "deleteItem(" + key + ");");
-		var deleteText = document.createTextNode("delete item");
+		var deleteText = document.createTextNode("Delete item");
 		deleteLink.appendChild(deleteText);
 		newP.appendChild(deleteLink);
+		newDiv.appendChild(newP);
+		getListdiv.appendChild(newDiv);
 		
 		//edit single item link
+		var newP = document.createElement("p");
 		var editLink = document.createElement("a");
-		var setHref = editLink.setAttribute("href", "#");
+		var setHref = editLink.setAttribute("href", "#addmovie");
 		var setOnclick = editLink.setAttribute("onclick", "editItem(" + key + ");");
-		var editText = document.createTextNode("edit item");
+		var editText = document.createTextNode("Edit item");
 		editLink.appendChild(editText);
 		newP.appendChild(editLink);
-		getListdiv.appendChild(newP);
+		newDiv.appendChild(newP);
+		//getListdiv.appendChild(newP);
 		}
 		
 		if(localStorage.getItem('apptitle')){
@@ -73,14 +135,7 @@ function saveItems(id){
 	var genre = document.getElementById('genre').value;
 	var title = document.getElementById('title').value;
 	var actor = document.getElementById('actor').value;
-		if(actor == "Enter Actor/Actress Name"){ 
-			actor = "";
-		}
-		// if you left the value with the default text than this will make the value blank
 	var director = document.getElementById('director').value;
-		if(director == "Enter Director Name"){
-			director = "";
-		}
 	var rating = document.getElementById('rating').value;
 	var favorites = document.getElementById('favorites').value;
 	if(favorites == "on"){ 
@@ -107,6 +162,7 @@ function saveItems(id){
 		description
 	];
 	localStorage.setItem(key, allItems);
+	location.reload();
 }
 
 // EDIT ITEMS FUNCTION		----------------------------
@@ -143,24 +199,19 @@ function editItem(id){
 	document.getElementById('description').value = description;
 	
 	// show edit item button, hide submit button
-	var editItem = document.getElementById('editItem');
-	editItem.style.display = "block";
-	var submit = document.getElementById('submit');
-	submit.style.display = "none";
+	var editButton = document.getElementById('edit-item-button');
+	editButton.style.display = "block";
+	var subresButtons = document.getElementById('submit-reset-buttons');
+	subresButtons.style.display = "none";
+	var itemList = document.getElementById('list');
+	itemList.style.display = "none";
 	
 	// when clicking editItem button
-	document.getElementById('editItem').onclick = function(){
+	document.getElementById('edit-item').onclick = function(){
 		var genre = document.getElementById('genre').value;
 		var title = document.getElementById('title').value;
 		var actor = document.getElementById('actor').value;
-			if(actor == "Enter Actor/Actress Name"){ 
-				actor = "";
-			}
-		// if you left the value with the default text than this will make the value blank
 		var director = document.getElementById('director').value;
-			if(director == "Enter Director Name"){
-				director = "";
-			}
 		var rating = document.getElementById('rating').value;
 		var favorites = document.getElementById('favorites').value;
 		if(favorites == "on"){ 
@@ -186,9 +237,10 @@ function editItem(id){
 			release,
 			description
 		];
-		if(genre != "choose" && title != "" && title != "Enter Movie Title" && release != ""){
+		if(title != "" && title != "Enter Movie Title" && release != ""){
 			localStorage.setItem(itemId, allItems);
 			alert("Item Updated!");
+			location.reload();
 		}else{
 			alert("All fields are required.");
 		}
@@ -211,7 +263,7 @@ function clearItems(){
 	localStorage.clear();
 	return false;
 }
-/*
+
 // VALIDATE FORM FUNCTION	----------------------------
 function validateForm(){
 	var getGenre = document.getElementById('genre').value;
@@ -220,31 +272,30 @@ function validateForm(){
 	var getDirector = document.getElementById('director').value;
 	var getDate = document.getElementById('release').value;
 	
+/*
 	if(getGenre == "choose"){ // if you didn't choose a genre than you get an alert and it returns to the form
 		alert("You must choose a genre.");
 		document.getElementById("genre").style.border = "1px solid red";
 		return false;
 	}
+	*/
 	
-	if(getTitle == "" || getTitle == "Enter Movie Title"){ // must enter a title
-		alert("You must enter a movie title.");
+	if(getTitle == ""){ // must enter a title
 		document.getElementById("title").style.border = "1px solid red";
 		return false;
 	}
 	
 	if(getDate == ""){
-		alert("You must enter a release date."); // must enter a release date
 		document.getElementById("release").style.border = "1px solid red";
 		return false;
 	}else{
 		document.getElementById("title").style.border = "1px solid #ccc";
 		document.getElementById("genre").style.border = "1px solid #ccc";
-		alert("Form Submitted!");
 		saveItems(); // if all is good than run the saveItems function
 	}
 }
 
-*/
+
 function clickclear(thisfield, defaulttext) {
 	if (thisfield.value == defaulttext) {
 		thisfield.value = "";
@@ -257,7 +308,7 @@ function clickrecall(thisfield, defaulttext) {
 	}
 }
 
-$(document).ready(function(){
-	var movieform = $('#main');
+//$(document).ready(function(){
+	var movieform = $('#addmovieform');
 	movieform.validate();
-});
+//});

@@ -21,31 +21,32 @@ Term: 1109
 		<meta http-equiv="cleartype" content="on">
 		
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
+		<link rel="stylesheet" type="text/css" href="jquery.mobile.datebox.css" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		
 		<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
 		<script src="js/libs/modernizr.custom.min.js"></script>
-		<script src="js/main.js"></script>
+		
 	</head>
 	<body>
-		<div data-role="page">
+		<div data-role="page" id="addmovie">
 			<div data-role="header">
 				<h1>Add Movie</h1>
 			</div>
 			<div data-role="content">
-				<form action="#" method="post" onsubmit="validateForm();" id="main">
+				<form action="#" method="post" onsubmit="validateForm();" id="addmovieform">
 					<div id="selectgenre" data-role="fieldcontain">
 						<fieldset>
 							<label for="genre"><h3>Select A Movie Genre</h3></label>
 							<select id="genre" name="genre" data-native-menu="false" class="required"> 
 								<option data-placeholder="true" value>Choose a Genre</option>
 								<optgroup label="Genres">
-									<option value="comedy">Comedy</option>
-									<option value="drama">Drama</option>
-									<option value="action">Action</option>
-									<option value="horror">Horror</option>
-									<option value="documentary">Documentary</option>
-									<option value="other">Other</option>
+									<option value="Comedy">Comedy</option>
+									<option value="Drama">Drama</option>
+									<option value="Action">Action</option>
+									<option value="Horror">Horror</option>
+									<option value="Documentary">Documentary</option>
+									<option value="Other">Other</option>
 								</optgroup>
 							</select>
 						</fieldset>
@@ -68,28 +69,35 @@ Term: 1109
 							<label for="yes">Yes </label><input type="radio" value="Yes" id="yes" name="family" /> 
 							<label for="no">No </label><input type="radio" checked value="No" id="no" name="family" /><br />
 							<label for="release">Release Date:</label><br />
-							<input type="date" placeholder="2011-08-04" id="release" name="release" /><br /><br />
+							<input type="date" id="release" name="release" class="required" data-role="datebox" data-options='{"mode": "flipbox"}' /><br /><br />
 							<label for="description">Movie Description: </label>
 							<textarea id="description"></textarea>
 						</fieldset>
 					</div>
 					<div id="addmoviebuttons" data-role="fieldcontain">
-						<input type="submit" id="submit" value="Add Movie To Collection" data-theme="b" /> 
-						<input type="reset" id="reset" value="Reset Form" />
-						<!--<input type="button" id="editItem" value="Edit Item" style="display: none;" />-->
+						<div id="submit-reset-buttons">
+							<input type="submit" id="submit" value="Add Movie To Collection" data-theme="b" /> 
+							<input type="reset" id="reset" value="Reset Form" />
+						</div>
+						<div id="edit-item-button" style="display: none;">
+							<input type="button" id="edit-item" value="Edit Item" />
+						</div>
 					</div>
 				</form>
 				<div id="list"></div>
-				<p id="clear"><a href="#" onclick="clearItems(); location.reload();">Clear Local Storage</a></p>
+				
+				<div id="clearlocal">
+					<p id="clear"><a href="#" onclick="clearItems(); location.reload();">Clear Local Storage</a></p>
+				</div>
+
+
+				<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+				<script src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
+				<script src="js/libs/jquery.validate.min.js"></script>
+				<script src="js/libs/jquery.mobile.datebox.js"></script>
 				<script src="js/main.js"></script>
 				<script>getItems();</script>
 			</div>
 		</div>
-		
-		
-	<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
-	<script src="js/libs/jquery.validate.min.js"></script>
-	<script src="js/main.js"></script>
 	</body>
 </html>
