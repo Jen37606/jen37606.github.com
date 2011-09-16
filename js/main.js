@@ -106,7 +106,7 @@ function getItems(){
 		//edit single item link
 		var newP = document.createElement("p");
 		var editLink = document.createElement("a");
-		var setHref = editLink.setAttribute("href", "#addmovie");
+		var setHref = editLink.setAttribute("href", "#");
 		var setOnclick = editLink.setAttribute("onclick", "editItem(" + key + ");");
 		var editText = document.createTextNode("Edit item");
 		editLink.appendChild(editText);
@@ -239,10 +239,10 @@ function editItem(id){
 		];
 		if(title != "" && title != "Enter Movie Title" && release != ""){
 			localStorage.setItem(itemId, allItems);
-			alert("Item Updated!");
+			//alert("Item Updated!");
 			location.reload();
 		}else{
-			alert("All fields are required.");
+			alert("The Title and Release Date fields are required.");
 		}
 	};
 }
