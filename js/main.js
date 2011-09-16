@@ -57,7 +57,7 @@ function getItems(){
 		var clearLink = document.getElementById('clear');
 		clearLink.style.display = "block";
 	}else{
-		var title = "Enter Movie Title";
+		var title = "";
 		var actor = "Enter Actor/Actress Name";
 		var director = "Enter Director Name";
 		var title = document.getElementById('title').value = title;
@@ -211,7 +211,7 @@ function clearItems(){
 	localStorage.clear();
 	return false;
 }
-
+/*
 // VALIDATE FORM FUNCTION	----------------------------
 function validateForm(){
 	var getGenre = document.getElementById('genre').value;
@@ -244,6 +244,7 @@ function validateForm(){
 	}
 }
 
+*/
 function clickclear(thisfield, defaulttext) {
 if (thisfield.value == defaulttext) {
 thisfield.value = "";
@@ -255,3 +256,12 @@ if (thisfield.value == "") {
 thisfield.value = defaulttext;
 }
 }
+
+$(document).ready(function(){
+	var movieform = $('#main');
+	movieform.validate({
+		invalidHandler: function(form, validator){};
+		submitHandler: function(){};
+	});
+
+});

@@ -19,6 +19,12 @@
 	padding-left: 2px;
 }
 
+label.error{
+	display: block;
+	color: #cc0000;
+	padding: 10px 0px;
+}
+
 /*
 
 OLD CSS-------

@@ -26,7 +26,6 @@ Term: 1109
 		<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
 		<script src="js/libs/modernizr.custom.min.js"></script>
 		<script src="js/main.js"></script>
-		
 	</head>
 	<body>
 		<div data-role="page">
@@ -38,9 +37,9 @@ Term: 1109
 					<div id="selectgenre" data-role="fieldcontain">
 						<fieldset>
 							<label for="genre"><h3>Select A Movie Genre</h3></label>
-							<select id="genre"> 
+							<select id="genre" name="genre" data-native-menu="false" class="required"> 
+								<option data-placeholder="true" value>Choose a Genre</option>
 								<optgroup label="Genres">
-									<option value="choose">Choose a Genre</option>
 									<option value="comedy">Comedy</option>
 									<option value="drama">Drama</option>
 									<option value="action">Action</option>
@@ -49,28 +48,27 @@ Term: 1109
 									<option value="other">Other</option>
 								</optgroup>
 							</select>
-							</label>
 						</fieldset>
 					</div>
 					<div id="movieinfo" data-role="fieldcontain">
 						<fieldset>
 							<legend><h3>Movie Information</h3></legend>
 							<label for="title">Movie Title:</label>							
-							<input type="text" id="title" onclick="this.value=''" /><br />
+							<input type="text" id="title" name="title" class="required" /><br />
 							<label for="actor">Main Actor/Actress:</label>
-							<input type="text" id="actor" onclick="this.value=''" /><br />
+							<input type="text" id="actor" name="actor" /><br />
 							<label for="director">Director:</label>
-							<input type="text" id="director" onclick="this.value=''" /><br />
+							<input type="text" id="director" name="director" /><br />
 							<label for="rating">Rating:</label>
 							<p>Rate your movie with 1 being a bad rating and 5 being the best.</p>
-							<input type="range" value="1" min="1" max="5" id="rating" /><br /><br />
+							<input type="range" value="4" min="1" max="5" id="rating" /><br /><br />
 							<label for="favorites">Add to favorites?</label>
 							<input type="checkbox" id="favorites" /><br />
 							<label for="family">Is this a family movie?</label>		
 							<label for="yes">Yes </label><input type="radio" checked value="Yes" id="yes" name="family" /> 
 							<label for="no">No </label><input type="radio" value="No" id="no" name="family" /><br />
 							<label for="release">Release Date:</label><br />
-							<input type="date" min="1900-01-01" max="" placeholder="2011-08-04" required aria-required="true" id="release" /><br /><br />
+							<input type="date" min="1900-01-01" max="" placeholder="2011-08-04" required aria-required="true" id="release" name="release" class="required" /><br /><br />
 							<label for="description">Movie Description: </label>
 							<textarea id="description"></textarea>
 						</fieldset>
@@ -82,7 +80,7 @@ Term: 1109
 				</form>
 				<div id="list"></div>
 				<p id="clear"><a href="#" onclick="clearItems(); location.reload();">Clear Local Storage</a></p>
-				<script src="main.js"></script>
+				
 				<script>getItems();</script>
 			</div>
 		</div>
@@ -90,6 +88,7 @@ Term: 1109
 		
 	<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
+	<script src="js/libs/jquery.validate.min.js"></script>
 	<script src="js/main.js"></script>
 	</body>
 </html>
