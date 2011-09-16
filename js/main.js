@@ -58,8 +58,8 @@ function getItems(){
 		clearLink.style.display = "block";
 	}else{
 		var title = "";
-		var actor = "Enter Actor/Actress Name";
-		var director = "Enter Director Name";
+		var actor = "";
+		var director = "";
 		var title = document.getElementById('title').value = title;
 		var actor = document.getElementById('actor').value = actor;
 		var director = document.getElementById('director').value = director;
@@ -246,22 +246,18 @@ function validateForm(){
 
 */
 function clickclear(thisfield, defaulttext) {
-if (thisfield.value == defaulttext) {
-thisfield.value = "";
-}
+	if (thisfield.value == defaulttext) {
+		thisfield.value = "";
+	}
 }
 
 function clickrecall(thisfield, defaulttext) {
-if (thisfield.value == "") {
-thisfield.value = defaulttext;
-}
+	if (thisfield.value == "") {
+		thisfield.value = defaulttext;
+	}
 }
 
 $(document).ready(function(){
 	var movieform = $('#main');
-	movieform.validate({
-		invalidHandler: function(form, validator){};
-		submitHandler: function(){};
-	});
-
+	movieform.validate();
 });

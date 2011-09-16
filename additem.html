@@ -65,22 +65,23 @@ Term: 1109
 							<label for="favorites">Add to favorites?</label>
 							<input type="checkbox" id="favorites" /><br />
 							<label for="family">Is this a family movie?</label>		
-							<label for="yes">Yes </label><input type="radio" checked value="Yes" id="yes" name="family" /> 
-							<label for="no">No </label><input type="radio" value="No" id="no" name="family" /><br />
+							<label for="yes">Yes </label><input type="radio" value="Yes" id="yes" name="family" /> 
+							<label for="no">No </label><input type="radio" checked value="No" id="no" name="family" /><br />
 							<label for="release">Release Date:</label><br />
-							<input type="date" min="1900-01-01" max="" placeholder="2011-08-04" required aria-required="true" id="release" name="release" class="required" /><br /><br />
+							<input type="date" placeholder="2011-08-04" id="release" name="release" /><br /><br />
 							<label for="description">Movie Description: </label>
 							<textarea id="description"></textarea>
 						</fieldset>
 					</div>
 					<div id="addmoviebuttons" data-role="fieldcontain">
 						<input type="submit" id="submit" value="Add Movie To Collection" data-theme="b" /> 
-						<input type="submit" id="editItem" value="Edit Item" style="display:none;" />
+						<input type="reset" id="reset" value="Reset Form" />
+						<!--<input type="button" id="editItem" value="Edit Item" style="display: none;" />-->
 					</div>
 				</form>
 				<div id="list"></div>
 				<p id="clear"><a href="#" onclick="clearItems(); location.reload();">Clear Local Storage</a></p>
-				
+				<script src="js/main.js"></script>
 				<script>getItems();</script>
 			</div>
 		</div>
