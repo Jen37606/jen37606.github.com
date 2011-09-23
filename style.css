@@ -1,3 +1,31 @@
+#title{
+	min-height: 1.1em; 
+	text-align: left; 
+	font-size: 16px; 
+	display: block; 
+	margin: .8em 10px .8em;  
+	padding: 0;  
+	text-overflow: ellipsis; 
+	overflow: hidden; 
+	white-space: nowrap; 
+	outline: 0 !important;
+}
+
+#title h1{
+	margin: 0; 
+	padding: 0; 
+	font-size: 16px; 
+	display: inline-block;
+}
+
+.content{
+	background-image:url("images/bg.gif");
+}
+
+.content p{
+	text-shadow: 1px 1px 2px #ccc;
+}
+
 #cta{
 	text-align: center;
 }
@@ -17,6 +45,14 @@
 
 #movieinfo label{
 	padding-left: 2px;
+}
+
+label{
+	text-shadow: 1px 1px 2px #ccc;
+}
+
+fieldset{
+	text-shadow: 1px 1px 2px #ccc;
 }
 
 label.error{

@@ -30,11 +30,13 @@ Term: 1109
 	</head>
 	<body>
 		<div data-role="page" id="addmovie">
-			<div data-role="header">
+			<div id="title">
+				<img src="images/logo.png" align="left" width="30" height="20" alt="" title="" border="0" /><h1>My Movie Collection</h1>	
+			</div>
+			<div data-role="header" data-theme="b">
 				<h1>Add Movie</h1>
 			</div>
-			<div data-role="content">
-			<div id="top"></div>
+			<div data-role="content" class="content">
 				<form action="#" method="post" onsubmit="validateForm();" name="addmovieform" id="addmovieform">
 					<div id="selectgenre" data-role="fieldcontain">
 						<fieldset>
@@ -77,8 +79,14 @@ Term: 1109
 					</div>
 					<div id="addmoviebuttons" data-role="fieldcontain">
 						<div id="submit-reset-buttons">
-							<input type="submit" id="submit" value="Add Movie To Collection" data-theme="b" /> 
-							<input type="reset" id="reset" value="Reset Form" />
+							<div class="ui-grid-a">
+								<div class="ui-block-a">
+									<input type="reset" id="reset" value="Reset Form" />
+								</div>
+								<div class="ui-block-b">
+									<input type="submit" id="submit" class="addmoviebutton" value="Add Movie" data-theme="b" /> 
+								</div>
+							</div>
 						</div>
 						<div id="edit-item-button" style="display: none;">
 							<input type="button" id="edit-item" value="Edit Item" />
