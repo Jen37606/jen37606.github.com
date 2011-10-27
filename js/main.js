@@ -132,24 +132,24 @@ function getItems(){
 function saveItems(id){
 	var d = new Date();
     var key= (d.getTime());
-	var genre = document.getElementById('genre').value;
-	var title = document.getElementById('title').value;
-	var actor = document.getElementById('actor').value;
-	var director = document.getElementById('director').value;
-	var rating = document.getElementById('rating').value;
-	var favorites = document.getElementById('favorites').value;
+    var genre = $('#genre').val();
+    var title = $('#title').val();
+    var actor = $('#actor').val();
+    var director = $('#director').val();
+    var rating = $('#rating').val();
+    var favorites = $('#favorites').val();
 	if(favorites == "on"){ 
 		var favorites = "Yes" // if favorite is checked say yes
 	}else{
 		var favorites = "No" // if not, say no
 		}
-	if(document.getElementById('yes').checked){
+	if($('#yes').checked){
 		var family = "This is a family movie"
 	}else{
 		var family = "This is not a family movie"
 	}
-	var release = document.getElementById('release').value;
-	var description = document.getElementById('description').value;
+	var release = $('#release').val();
+	var description = $('#description').val();
 	var allItems = [
 		genre,
 		title,
