@@ -1,6 +1,7 @@
 // GET ITEMS FUNCTION		----------------------------
 function getItems(){
-	var getListdiv = document.getElementById("list");
+	var getListdiv = document.getElementById("list"); 
+	//$('#list'); This is not working???
 	
 	for(var i=0, len = localStorage.length; i < len; i++){
 		var key = localStorage.key(i);
@@ -15,7 +16,8 @@ function getItems(){
 		var family = value[6];
 		var release = value[7];
 		var description = value[8];
-		var newDiv = document.createElement("div");
+		var newDiv = document.createElement("div"); 
+		
 		/*for(var ii=0, allLength = value.length; ii < allLength; ii++){
 			var newPara = document.createElement("p");
 			var itemTxt = document.createTextNode(value[ii]);
@@ -23,13 +25,14 @@ function getItems(){
 			newDiv.appendChild(newPara);
 			getListdiv.appendChild(newDiv);
 		}*/
+			
 		var newh3 = document.createElement("h3");
 		var titleTxt = document.createTextNode(value[1]);
 		newh3.appendChild(titleTxt);
 		newDiv.appendChild(newh3);
 		getListdiv.appendChild(newDiv);
 		var setdiv = newDiv.setAttribute("data-role", "fieldcontain");
-		
+	
 		var newP = document.createElement("p");
 		var genreTxt = document.createTextNode("Genre: " + value[0]);
 		newP.appendChild(genreTxt);
@@ -116,16 +119,15 @@ function getItems(){
 		}
 		
 		if(localStorage.getItem('apptitle')){
-		var clearLink = document.getElementById('clear');
-		clearLink.style.display = "block";
-	}else{
-		var title = "";
-		var actor = "";
-		var director = "";
-		var title = document.getElementById('title').value = title;
-		var actor = document.getElementById('actor').value = actor;
-		var director = document.getElementById('director').value = director;
-	}
+			var clearLink = $('#clear').css('display', 'block'); 
+		}else{
+			var title = "";
+			var actor = "";
+			var director = "";
+			var title = $('#title').val(title);
+			var actor = $('#actor').val(actor);
+			var director = $('#director').val(director);
+		}
 }
 
 // SAVE ITEMS FUNCTION		----------------------------
@@ -143,7 +145,7 @@ function saveItems(id){
 	}else{
 		var favorites = "No" // if not, say no
 		}
-	if($('#yes').attr('checked', 'checked')){
+	if($('#yes').attr('checked')){
 		var family = "This is a family movie"
 	}else{
 		var family = "This is not a family movie"
@@ -187,8 +189,8 @@ function editItem(id){
 	$('#director').val(director);
 	$('#rating').val(rating);
 	if(favorites == "Yes"){
-		$('#favorites').attr('checked', 'checked');
-		//document.getElementById('favorites').setAttribute("checked", "checked");
+		//$('#favorites').attr('checked', 'checked');
+		document.getElementById('favorites').setAttribute("checked", "checked");
 	}
 	if(family == "This is a family movie"){
 		$('#yes').attr('checked', 'checked');
@@ -218,7 +220,7 @@ function editItem(id){
 		}else{
 			var favorites = "No" // if not, say no
 			}
-		if($('#yes').attr('checked', 'checked')){
+		if($('#yes').attr('checked')){
 			var family = "This is a family movie"
 		}else{
 			var family = "This is not a family movie"
@@ -267,31 +269,23 @@ function clearItems(){
 
 // VALIDATE FORM FUNCTION	----------------------------
 function validateForm(){
-	var getGenre = document.getElementById('genre').value;
-	var getTitle = document.getElementById('title').value;
-	var getActor = document.getElementById('actor').value;
-	var getDirector = document.getElementById('director').value;
-	var getDate = document.getElementById('release').value;
-	
-/*
-	if(getGenre == "choose"){ // if you didn't choose a genre than you get an alert and it returns to the form
-		alert("You must choose a genre.");
-		document.getElementById("genre").style.border = "1px solid red";
-		return false;
-	}
-	*/
+	var getGenre = $('#genre').val();
+	var getTitle = $('#title').val();
+	var getActor = $('#actor').val();
+	var getDirector = $('#director').val();
+	var getDate = $('#release').val();
 	
 	if(getTitle == ""){ // must enter a title
-		document.getElementById("title").style.border = "1px solid red";
+		$('#title').css('border', '1px solid red');
 		return false;
 	}
 	
 	if(getDate == ""){
-		document.getElementById("release").style.border = "1px solid red";
+		$('#release').css('border', '1px solid red');
 		return false;
 	}else{
-		document.getElementById("title").style.border = "1px solid #ccc";
-		document.getElementById("genre").style.border = "1px solid #ccc";
+		$('#title').css('border', '1px solid #ccc');
+		$('#genre').css('border', '1px solid #ccc');
 		saveItems(); // if all is good than run the saveItems function
 	}
 }
@@ -309,10 +303,10 @@ function clickrecall(thisfield, defaulttext) {
 	}
 }
 
-//$(document).ready(function(){
-//	var movieform = $('#addmovieform');
-//	movieform.validate();
-//});
+// Validate the whole form
+var movieform = $('#addmovieform');
+movieform.validate();
+
 
 $(document).ready( function() {
     var now = new Date();
