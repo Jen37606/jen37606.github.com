@@ -181,30 +181,32 @@ function editItem(id){
 	var release = value[7];
 	var description = value[8];
 	
-	document.getElementById('genre').value = genre;
-	document.getElementById('title').value = title;
-	document.getElementById('actor').value = actor;
-	document.getElementById('director').value = director;
-	document.getElementById('rating').value = rating;
-	document.getElementById('favorites').value = favorites;
+	$('#genre').val(genre);
+	$('#title').val(title);
+	$('#actor').val(actor);
+	$('#director').val(director);
+	$('#rating').val(rating);
+	$('#favorites').val(favorites);
 	if(favorites == "Yes"){
-		document.getElementById('favorites').setAttribute("checked", "checked");
+		$('#favorites').attr('checked', 'checked');
+		//document.getElementById('favorites').setAttribute("checked", "checked");
 	}
 	if(family == "This is a family movie"){
-		document.getElementById('yes').setAttribute("checked", "checked");
+		$('#yes').attr('checked', 'checked');
+		//document.getElementById('yes').setAttribute("checked", "checked");
 	}else{
-		document.getElementById('no').setAttribute("checked", "checked");
+		$('#no').attr('checked', 'checked');
+		//document.getElementById('no').setAttribute("checked", "checked");
 	}
-	document.getElementById('release').value = release;
-	document.getElementById('description').value = description;
+	$('#release').val(release);
+	$('#description').val(description);
 	
 	// show edit item button, hide submit button
-	var editButton = document.getElementById('edit-item-button');
-	editButton.style.display = "block";
-	var subresButtons = document.getElementById('submit-reset-buttons');
-	subresButtons.style.display = "none";
-	var itemList = document.getElementById('list');
-	itemList.style.display = "none";
+	var editButton = $('#edit-item-button').css('display', 'block');
+	var subresButtons = $('#submit-reset-buttons').css('display', 'none');
+	var itemList = $('#list').css('display', 'none');
+	//var itemList = document.getElementById('list');
+	//itemList.style.display = "none";
 	
 	// when clicking editItem button
 	document.getElementById('edit-item').onclick = function(){
@@ -309,8 +311,8 @@ function clickrecall(thisfield, defaulttext) {
 }
 
 //$(document).ready(function(){
-	var movieform = $('#addmovieform');
-	movieform.validate();
+//	var movieform = $('#addmovieform');
+//	movieform.validate();
 //});
 
 $(document).ready( function() {
