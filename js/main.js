@@ -308,47 +308,60 @@ function clickrecall(thisfield, defaulttext) {
 	}
 }
 
-
-
-
+// Get Date Function
 $(document).ready( function() {
     var now = new Date();
     var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
     $('#release').val(today);
 });
 
+// GET DATA FUNCTIONS!------------
 
-// Get Data
-$(function(){
-	// JSON Data
-	$('#jsonbutton').bind('click', function(){
-		$.ajax({
-			url: 'xhr/data.json',
-			type: 'GET',
-			dataType: 'json',
-			success: function(data, status){
-				console.log(status, data);
-			}
-		});
-		return false;
+// JSON Data
+$('#jsonbutton').bind('click', function(){
+	$.ajax({
+		url: 'xhr/data.json',
+		type: 'GET',
+		dataType: 'json',
+		success: function(data, status){
+			console.log(status, data);
+		}
 	});
-	
-	
-	// XML Data
-	$('#xmlbutton').bind('click', function(){
-		$.ajax({
-			url: 'xhr/data.xml',
-			type: 'GET',
-			dataType: 'xml',
-			success: parseXml
-		});
-		return false;
-	});
+	return false;
 });
 
+
+// XML Data
+$('#xmlbutton').bind('click', function(){
+	$.ajax({
+		url: 'xhr/data.xml',
+		type: 'GET',
+		dataType: 'xml',
+		success: parseXml
+	});
+	return false;
+});
+
+// Function to parse the XML
 function parseXml(xml){
 	$(xml).find("movie").each(function(){
    		var item = $(this);
     	console.log("Name: ", item.find("title"));
 	});
 }
+
+//YALM Data
+$('#yalmbutton').bind('click', function(){
+	var test1 = YAML.eval("---\n- one\n- two");
+	var test2 = YAML.eval("---\none: two");
+	
+	YAML.fromURL("data.yml", function(data) {
+		var errors = YAML.getErrors();
+		if(errors.length == 0)
+			document.getElementById("out").innerHTML = "Done! Took " + YAML.getProcessingTime() + " miliseconds.";
+		else {
+			document.getElementById("out").innerHTML = errors.join("<br>");
+			}
+	});
+});
+
