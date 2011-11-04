@@ -275,6 +275,11 @@ function validateForm(){
 	var getDirector = $('#director').val();
 	var getDate = $('#release').val();
 	
+	// Validate the whole form
+	//$(document).ready( function() {
+		var movieform = $('#addmovieform');
+		movieform.validate();
+	//});
 	if(getTitle == ""){ // must enter a title
 		$('#title').css('border', '1px solid red');
 		return false;
@@ -303,13 +308,28 @@ function clickrecall(thisfield, defaulttext) {
 	}
 }
 
-// Validate the whole form
-var movieform = $('#addmovieform');
-movieform.validate();
+
 
 
 $(document).ready( function() {
     var now = new Date();
     var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
     $('#release').val(today);
+});
+
+
+
+// Get JSON Data
+$(function(){
+	$('#jsonbutton').bind('click', function(){
+		$.ajax({
+			url: 'xhr/data.json',
+			type: 'GET',
+			dataType: 'json',
+			success: function(data, status){
+				console.log(status, data);
+			}
+		});
+		return false;
+	});
 });
