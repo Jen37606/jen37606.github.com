@@ -352,16 +352,8 @@ function parseXml(xml){
 
 //YALM Data
 $('#yalmbutton').bind('click', function(){
-	var test1 = YAML.eval("---\n- one\n- two");
-	var test2 = YAML.eval("---\none: two");
-	
-	YAML.fromURL("data.yml", function(data) {
-		var errors = YAML.getErrors();
-		if(errors.length == 0)
-			document.getElementById("out").innerHTML = "Done! Took " + YAML.getProcessingTime() + " miliseconds.";
-		else {
-			document.getElementById("out").innerHTML = errors.join("<br>");
-			}
-	});
+	YAML.fromURL("xhr/data.yml", function(data) {
+		console.log(data);
+		});
 });
 
