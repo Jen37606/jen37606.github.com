@@ -318,9 +318,9 @@ $(document).ready( function() {
 });
 
 
-
-// Get JSON Data
+// Get Data
 $(function(){
+	// JSON Data
 	$('#jsonbutton').bind('click', function(){
 		$.ajax({
 			url: 'xhr/data.json',
@@ -332,4 +332,23 @@ $(function(){
 		});
 		return false;
 	});
+	
+	
+	// XML Data
+	$('#xmlbutton').bind('click', function(){
+		$.ajax({
+			url: 'xhr/data.xml',
+			type: 'GET',
+			dataType: 'xml',
+			success: parseXml
+		});
+		return false;
+	});
 });
+
+function parseXml(xml){
+	$(xml).find("movie").each(function(){
+   		var item = $(this);
+    	console.log("Name: ", item.find("title"));
+	});
+}

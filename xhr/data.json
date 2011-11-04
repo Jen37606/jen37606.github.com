@@ -29,5 +29,25 @@
 		"release" : "2011-12-8",
 		"description" : "Two fledgling criminals kidnap a pizza delivery guy, strap a bomb to his chest, and inform him that he has mere hours to rob a bank or else..."
 	},	
+	{
+		"title": "Step Brothers",
+		"actors": "Will Ferrell, John C. Reilly",
+		"director" : "Adam McKay",
+		"rating" : "5",
+		"favorites" : true,
+		"family" : false,
+		"release" : "2008-25-7",
+		"description" : "Two aimless middle-aged losers still living at home are forced against their will to become roommates when their parents get married."
+	},	
+	{
+		"title": "Superbad",
+		"actors": "Michael Cera, Jonah Hill",
+		"director" : "Greg Mottola",
+		"rating" : "4",
+		"favorites" : true,
+		"family" : false,
+		"release" : "2007-17-8",
+		"description" : "Two co-dependent high school seniors are forced to deal with separation anxiety after their plan to stage a booze-soaked party goes awry."
+	}
 ]
 }
