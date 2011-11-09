@@ -319,12 +319,23 @@ $(document).ready( function() {
 
 // JSON Data
 $('#jsonbutton').bind('click', function(){
+	$('#mydata').empty();
 	$.ajax({
 		url: 'xhr/data.json',
 		type: 'GET',
 		dataType: 'json',
-		success: function(data, status){
-			console.log(status, data);
+		success: function(response){
+        	for (var i=0, j=response.comedies.length; i<j; i++){
+				var jdata = response.comedies[i];
+				$(''+
+					'<li class="movietitle">'+
+						'<h3>'+ jdata.title +'</h3>'+
+						'<h4>'+ jdata.actors +'</h4>'+
+						'<p>'+ jdata.description +'</p>'+
+					'</li><hr />'
+				).appendTo('#mydata');
+				console.log(response);
+			}
 		}
 	});
 	return false;
@@ -333,27 +344,54 @@ $('#jsonbutton').bind('click', function(){
 
 // XML Data
 $('#xmlbutton').bind('click', function(){
+	$('#mydata').empty();
 	$.ajax({
 		url: 'xhr/data.xml',
 		type: 'GET',
 		dataType: 'xml',
-		success: parseXml
+		success: function(xml){
+			$(xml).find("movie").each(function(){
+   				var title = $(this).find('title').text();
+   				var actors = $(this).find('actors').text();
+   				var description = $(this).find('description').text();
+    			$(''+
+					'<li class="movietitle">'+
+						'<h3>'+ title +'</h3>'+
+						'<h4>'+ actors +'</h4>'+
+						'<p>'+ description +'</p>'+
+					'</li><hr />'
+				).appendTo('#mydata');
+				console.log(xml);
+			});
+		}
 	});
 	return false;
 });
 
-// Function to parse the XML
-function parseXml(xml){
-	$(xml).find("movie").each(function(){
-   		var item = $(this);
-    	console.log("Name: ", item.find("title"));
+//YAML Data
+$('#yamlbutton').bind('click', function(){
+	$('#mydata').empty();
+	YAML.fromURL("xhr/data.yml", function(yamlr) {
+	/*	for (var i=0, j=yamlr.length; i<j; i++){
+			var ydata = yamlr[i];
+			$(''+
+				'<li class="movietitle">'+
+					'<h3>'+ ydata.title +'</h3>'+
+					'<h4>'+ ydata.actors +'</h4>'+
+					'<p>'+ ydata.description +'</p>'+
+				'</li><hr />'
+			).appendTo('#mydata');
+			
+		}
+	*/
+		console.log(yamlr);
 	});
-}
-
-//YALM Data
-$('#yalmbutton').bind('click', function(){
-	YAML.fromURL("xhr/data.yml", function(data) {
-		console.log(data);
-		});
 });
 
+/*
+var items = [];
+$.each(items, function(index, value){
+	$("<li/>").html(value.name).appendTo("#mydata");
+});
+
+*/
