@@ -406,7 +406,7 @@ $('#couchbutton').bind('click', function(){
 						'<p>'+ description +'</p>'+
 					'</li><hr />'
 				).appendTo('#mydata');
-				//console.log(data);
+				console.log(data);
 			});
 		}
 	});
