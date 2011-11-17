@@ -1,3 +1,12 @@
+$('#home').live("pageshow", function(){
+	$.couch.db("asdproject").view("movieapp/movies", {
+		success: function(data) {
+			console.log(data);
+		}
+	});
+});
+
+
 // GET ITEMS FUNCTION		----------------------------
 function getItems(){
 	var getListdiv = document.getElementById("list"); 
