@@ -1,7 +1,63 @@
 $('#home').live("pageshow", function(){
 	$.couch.db("asdproject").view("movieapp/movies", {
 		success: function(data) {
-			console.log(data);
+			//console.log(data);
+			$('#homeItems').empty();
+			$.each(data.rows, function(index, value){
+				var item = (value.value || value.doc);
+				$('#homeItems').append(
+					$('<li>').append(
+						$('<a>')
+							.attr("href", "movie.html?movie=" + item.title)
+							.text(item.title)
+					)
+				)
+			});
+			$('#homeItems').listview('refresh');
+		}
+	});
+});
+
+var urlVars = function(){
+	var urlData = $($.mobile.activePage).data("url");
+	var urlParts = urlData.split('?');
+	var urlPairs = urlParts[1].split('&');
+	var urlValues = {};
+	for(var pair in urlPairs){
+		var keyValue = urlPairs[pair].split('=');
+		var key = decodeURIComponent(keyValue[0]);
+		var value = decodeURIComponent(keyValue[1]);
+		urlValues[key] = value;
+	}
+	return urlValues;
+};
+
+$('#movie').live("pageshow", function(){
+	var movie = urlVars()["movie"];
+	//console.log(movie);
+	$.couch.db("asdproject").view("movieapp/movies", {
+		key: "movie:" + movie
+	});
+	
+});
+
+$(document).ready(function(){
+	$.ajax({
+		"url": "_view/movies",
+		"dataType": "json",
+		"success" : function(data) {
+			$.each(data.rows, function(index, movies){
+				var title = movies.value.title;
+				var description = movies.value.description;
+				$('#movieItems').append(
+					$('<li>').append(
+                           $('<a>').attr("href", "#")
+                               .text(title)
+					)
+
+				);
+			});
+		$('#movieItems').listview('refresh');
 		}
 	});
 });
@@ -396,6 +452,8 @@ $('#yamlbutton').bind('click', function(){
 		console.log(yamlr);
 	});
 });
+
+
 
 // Couch Data
 $('#couchbutton').bind('click', function(){

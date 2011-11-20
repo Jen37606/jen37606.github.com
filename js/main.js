@@ -1,7 +1,19 @@
 $('#home').live("pageshow", function(){
-	$.couch.db("asdproject").view("movieapp/movie", {
+	$.couch.db("asdproject").view("movieapp/movies", {
 		success: function(data) {
-			console.log(data);
+			//console.log(data);
+			$('#mydata').empty();
+			$.each(data.rows, function(index, value){
+				var item = (value.value || value.doc);
+				$('#mydata').append(
+					$('<li>').append(
+						$('<a>')
+							.attr("href", "movie.html")
+							.text(item.title)
+					)
+				)
+			});
+			$('#mydata').listview('refresh');
 		}
 	});
 });
