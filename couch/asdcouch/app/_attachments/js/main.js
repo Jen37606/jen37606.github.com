@@ -32,35 +32,52 @@ var urlVars = function(){
 	return urlValues;
 };
 
+// DELETE ITEM FUNCTION		----------------------------
+function deleteMovie(movie){
+	var ask = confirm("Are you sure?");
+	if(ask){
+		$.couch.db("asdproject").removeDoc(movie, {
+     		success: function(data) {
+         		console.log(data);
+    		},
+    		error: function(status) {
+       			console.log(status);
+    		}
+		});
+		window.location.reload();
+	}else{
+		alert("Item not removed.");
+	}
+}
+
 $('#movie').live("pageshow", function(){
 	var movie = urlVars()["movie"];
 	//console.log(movie);
 	$.couch.db("asdproject").view("movieapp/movies", {
-		key: "movie:" + movie
+		key: "movie:" + movie,
+			success: function(data) {
+			console.log(movie);
+				$.each(data.rows, function(index, value){
+					var title = value.value.title;
+					var actors = value.value.actors;
+					var description = value.value.description;
+					console.log(description);
+					$('#movieItems').append(
+						$('<h3>').text(title),
+						$('<h5>').text("Actors: " + actors),
+						$('<p>').text(description),
+						$('<a>')
+							.attr("href", "#")
+							.attr("onclick", "deleteMovie()")
+							.text("Delete")
+					)
+				});
+				$('#movieItems').listview('refresh');
+			}
 	});
 	
 });
 
-$(document).ready(function(){
-	$.ajax({
-		"url": "_view/movies",
-		"dataType": "json",
-		"success" : function(data) {
-			$.each(data.rows, function(index, movies){
-				var title = movies.value.title;
-				var description = movies.value.description;
-				$('#movieItems').append(
-					$('<li>').append(
-                           $('<a>').attr("href", "#")
-                               .text(title)
-					)
-
-				);
-			});
-		$('#movieItems').listview('refresh');
-		}
-	});
-});
 
 
 // GET ITEMS FUNCTION		----------------------------
