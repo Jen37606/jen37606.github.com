@@ -32,24 +32,6 @@ var urlVars = function(){
 	return urlValues;
 };
 
-// DELETE ITEM FUNCTION		----------------------------
-function deleteMovie(movie){
-	var ask = confirm("Are you sure?");
-	if(ask){
-		$.couch.db("asdproject").removeDoc(movie, {
-     		success: function(data) {
-         		console.log(data);
-    		},
-    		error: function(status) {
-       			console.log(status);
-    		}
-		});
-		window.location.reload();
-	}else{
-		alert("Item not removed.");
-	}
-}
-
 $('#movie').live("pageshow", function(){
 	var movie = urlVars()["movie"];
 	//console.log(movie);
@@ -61,7 +43,6 @@ $('#movie').live("pageshow", function(){
 					var title = value.value.title;
 					var actors = value.value.actors;
 					var description = value.value.description;
-					console.log(description);
 					$('#movieItems').append(
 						$('<h3>').text(title),
 						$('<h5>').text("Actors: " + actors),
@@ -77,6 +58,72 @@ $('#movie').live("pageshow", function(){
 	});
 	
 });
+
+// DELETE ITEM FUNCTION		------------------ couch
+function deleteMovie(id){
+	var movie = urlVars()["movie"];
+	$.couch.db("asdproject").view("movieapp/movies", {
+		key: "movie:" + movie,
+			success: function(data) {
+				$.each(data.rows, function(index, value){
+					var id = value.value._id;
+					var rev = value.value._rev;
+					var doc = {
+						"_id": id,
+						"_rev": rev,
+					}
+					var ask = confirm("Are you sure?");
+					if(ask){
+						$.couch.db("asdproject").removeDoc(doc, {
+     						success: function(data) {
+         						console.log(data);
+    						},
+    						error: function(status) {
+       							console.log(status);
+    						}
+						});
+					//window.location.reload();
+					}else{
+						alert("Item not removed.");
+					}
+				});
+			}
+	});
+}
+
+//SAVE ITEMS FUNCTION ----------- couch
+function saveMovie(id){
+    var title = $('#title').val();
+    var key= ("movie:" + title);
+	var actor = $('#actor').val();
+	var description = $('#description').val();
+	var allItems = [
+		title,
+		actor,
+		description
+	];
+
+	var doc = {
+		"_id": "movie:" + title,
+		"title": title,
+		"actors": actor,
+		"description": description
+	};
+	$.couch.db("asdproject").saveDoc(doc, {
+    	success: function(data) {
+        	console.log(data);
+        	alert("Your movie was added!");
+    	},
+    	error: function(status) {
+        	console.log(status);
+        	alert("The movie was not added.");
+    	}
+	});
+	//location.reload();
+}
+
+
+
 
 
 
